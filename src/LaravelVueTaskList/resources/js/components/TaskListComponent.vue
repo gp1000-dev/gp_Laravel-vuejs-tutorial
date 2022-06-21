@@ -19,7 +19,12 @@
                 <td>Content1</td>
                 <td>Ichiro</td>
                 <td>
-                    <button class="btn btn-primary">Show</button>
+                    <!-- クリック時にページを遷移する -->
+                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
+                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/1 の形で名前付きルートを呼び出す -->
+                    <router-link v-bind:to="{name: 'task.show', params: {taskId: 1}}">
+                        <button class="btn btn-primary">Show</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-success">Edit</button>
@@ -34,7 +39,12 @@
                 <td>Content2</td>
                 <td>Jiro</td>
                 <td>
-                    <button class="btn btn-primary">Show</button>
+                    <!-- クリック時にページを遷移する -->
+                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
+                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/2 の形で名前付きルートを呼び出す -->
+                    <router-link v-bind:to="{name: 'task.show', params: {taskId: 2}}">
+                        <button class="btn btn-primary">Show</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-success">Edit</button>
@@ -49,7 +59,12 @@
                 <td>Content3</td>
                 <td>Saburo</td>
                 <td>
-                    <button class="btn btn-primary">Show</button>
+                    <!-- クリック時にページを遷移する -->
+                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
+                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/3 の形で名前付きルートを呼び出す -->
+                    <router-link v-bind:to="{name: 'task.show', params: {taskId: 3}}">
+                        <button class="btn btn-primary">Show</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-success">Edit</button>

@@ -4,6 +4,10 @@
             <nav class="navbar navbar-dark">
                 <span class="navbar-brand mb-0 h1">Vue Laravel SPA</span>
                 <div>
+                    <!-- クリック時にページを遷移する -->
+                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
+                    <!-- [to="リンク先"] -->
+                    <!-- [to="{ name: 'ルート名'}"] 名前付きルートを呼び出す -->
                     <router-link v-bind:to="{name: 'task.list'}"><!--vue-routerでtask.listと名付けたルーティングにリンクする-->
                         <button class="btn btn-success">List</button>
                     </router-link>

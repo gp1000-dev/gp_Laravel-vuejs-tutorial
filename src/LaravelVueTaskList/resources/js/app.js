@@ -5,6 +5,8 @@ import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
 // TaskListComponentコンポーネントをインポートする
 import TaskListComponent from "./components/TaskListComponent";
+// TaskShowComponentコンポーネントをインポートする
+import TaskShowComponent from "./components/TaskShowComponent";
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -32,6 +34,18 @@ const router = new VueRouter({
             name: 'task.list',
             // コンポーネントオプションを定義する
             component: TaskListComponent // mountするコンポーネントを指定する
+        },
+        {
+            // ルートに 指定したPathでマッピングする
+            // [:taskId] 任意の動的パラメータが入ります
+            path: '/tasks/:taskId',
+            // ルート名を定義する
+            name: 'task.show',
+            // コンポーネントオプションを定義する
+            component: TaskShowComponent, // mountするコンポーネントを指定する
+            // propsオプションを定義する
+            // [props: true] trueにすることで、動的パラメータをpropsでアクセスできる
+            props: true
         },
     ]
 });
