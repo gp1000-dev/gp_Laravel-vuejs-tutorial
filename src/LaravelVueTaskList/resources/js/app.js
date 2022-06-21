@@ -1,3 +1,6 @@
+/* [インポート] このファイルコンポーネントで外部のコンポーネントを使用可能にする */
+// HeaderComponentコンポーネントをインポートする
+import HeaderComponent from "./components/HeaderComponent";
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -20,6 +23,9 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+/* HeaderComponentコンポーネントを定義する */
+// Vue.component()で全てのVueインスタンスで有効にする
+Vue.component('header-component', HeaderComponent);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

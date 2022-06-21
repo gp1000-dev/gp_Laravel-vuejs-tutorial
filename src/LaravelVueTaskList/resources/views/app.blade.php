@@ -17,7 +17,7 @@
 <body>
 <div id="app">
     <!--コンポーネント呼び出し-->
-    <example-component></example-component>
+    <header-component></header-component>
 </div>
 <!-- Scripts（Vue.jsの読み込み） -->
 <script src="{{ mix('/js/app.js') }}" defer></script>
