@@ -9,6 +9,8 @@ import TaskListComponent from "./components/TaskListComponent";
 import TaskCreateComponent from "./components/TaskCreateComponent";
 // TaskShowComponentコンポーネントをインポートする
 import TaskShowComponent from "./components/TaskShowComponent";
+// TaskEditComponentコンポーネントをインポートする
+import TaskEditComponent from "./components/TaskEditComponent";
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -53,6 +55,18 @@ const router = new VueRouter({
             name: 'task.show',
             // コンポーネントオプションを定義する
             component: TaskShowComponent, // mountするコンポーネントを指定する
+            // propsオプションを定義する
+            // [props: true] trueにすることで、動的パラメータをpropsでアクセスできる
+            props: true
+        },
+        {
+            // ルートに 指定したPathでマッピングする
+            // [:taskId] 任意の動的パラメータが入ります
+            path: '/tasks/:taskId/edit',
+            // ルート名を定義する
+            name: 'task.edit',
+            // コンポーネントオプションを定義する
+            component: TaskEditComponent, // mountするコンポーネントを指定する
             // propsオプションを定義する
             // [props: true] trueにすることで、動的パラメータをpropsでアクセスできる
             props: true

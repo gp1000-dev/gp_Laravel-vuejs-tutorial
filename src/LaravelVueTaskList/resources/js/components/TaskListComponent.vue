@@ -27,7 +27,12 @@
                     </router-link>
                 </td>
                 <td>
-                    <button class="btn btn-success">Edit</button>
+                    <!-- クリック時にページを遷移する -->
+                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
+                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/1/edit の形で名前付きルートを呼び出す -->
+                    <router-link v-bind:to="{name: 'task.edit', params: {taskId: 1}}">
+                        <button class="btn btn-success">Edit</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-danger">Delete</button>
@@ -47,7 +52,12 @@
                     </router-link>
                 </td>
                 <td>
-                    <button class="btn btn-success">Edit</button>
+                    <!-- クリック時にページを遷移する -->
+                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
+                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/2/edit の形で名前付きルートを呼び出す -->
+                    <router-link v-bind:to="{name: 'task.edit', params: {taskId: 2}}">
+                        <button class="btn btn-success">Edit</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-danger">Delete</button>
@@ -67,7 +77,12 @@
                     </router-link>
                 </td>
                 <td>
-                    <button class="btn btn-success">Edit</button>
+                    <!-- クリック時にページを遷移する -->
+                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
+                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/3/edit の形で名前付きルートを呼び出す -->
+                    <router-link v-bind:to="{name: 'task.edit', params: {taskId: 3}}">
+                        <button class="btn btn-success">Edit</button>
+                    </router-link>
                 </td>
                 <td>
                     <button class="btn btn-danger">Delete</button>
