@@ -5,6 +5,8 @@ import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
 // TaskListComponentコンポーネントをインポートする
 import TaskListComponent from "./components/TaskListComponent";
+// TaskCreateComponentコンポーネントをインポートする
+import TaskCreateComponent from "./components/TaskCreateComponent";
 // TaskShowComponentコンポーネントをインポートする
 import TaskShowComponent from "./components/TaskShowComponent";
 /**
@@ -34,6 +36,14 @@ const router = new VueRouter({
             name: 'task.list',
             // コンポーネントオプションを定義する
             component: TaskListComponent // mountするコンポーネントを指定する
+        },
+        {
+            // ルートに 指定したPathでマッピングする
+            path: '/tasks/create',
+            // ルート名を定義する
+            name: 'task.create',
+            // コンポーネントオプションを定義する
+            component: TaskCreateComponent // mountするコンポーネントを指定する
         },
         {
             // ルートに 指定したPathでマッピングする
