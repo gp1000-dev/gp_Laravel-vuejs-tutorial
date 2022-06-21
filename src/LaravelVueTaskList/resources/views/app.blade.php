@@ -18,6 +18,8 @@
 <div id="app">
     <!--コンポーネント呼び出し-->
     <header-component></header-component>
+    <!--vue-routerに基づくコンポーネント呼び出し-->
+    <router-view></router-view>
 </div>
 <!-- Scripts（Vue.jsの読み込み） -->
 <script src="{{ mix('/js/app.js') }}" defer></script>
