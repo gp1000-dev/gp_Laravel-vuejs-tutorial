@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;//Modelsディレクトリを指定
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -31,5 +32,21 @@ class TaskController extends Controller
     {
         // 値を返す
         return $task;
+    }
+
+    /**
+     *  タスク登録
+     *  タスクを新規作成してDBに書き込む処理のコントローラー
+     *  POST /tasks/create
+     *  @param Request $request
+     *  @return mixed
+     */
+    public function store(Request $request)
+    {
+        // タスクを新規作成する
+        // モデルクラスから createメソッド を呼ぶことで、以下の一連の処理を行う
+        // [return Task::create()] インスタンスの生成 -> データの保存 -> 値を返す
+        // [$request->all()] リクエストからのクエリを実行して、レコードの全ての結果を取得します
+        return Task::create($request->all());
     }
 }
