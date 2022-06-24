@@ -19,4 +19,17 @@ class TaskController extends Controller
         // [all()] クエリを実行して、レコードの全ての結果を取得します
         return Task::all();
     }
+
+    /**
+     *  タスク詳細
+     *  Taskモデルの該当ID（主キー）のデータをDBから取得するコントローラー
+     *  GET /tasks/{task}
+     *  @param Task $task
+     *  @return \App\Models\Task
+     */
+    public function show(Task $task)
+    {
+        // 値を返す
+        return $task;
+    }
 }

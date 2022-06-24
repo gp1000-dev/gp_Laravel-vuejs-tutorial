@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 /* タスク一覧取得API */
 Route::get('/tasks', [TaskController::class, 'index']);
+/* タスク詳細取得API */
+Route::get('/tasks/{task}', [TaskController::class, 'show']);
