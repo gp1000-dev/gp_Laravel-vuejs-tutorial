@@ -67,4 +67,20 @@ class TaskController extends Controller
         // 値を返す
         return $task;
     }
+
+    /**
+     *  タスク削除
+     *  タスクの削除に応じてDBから削除する処理のコントローラー
+     *  GET /tasks/{task}
+     *  @param Task $task
+     *  @return \App\Models\Task
+     */
+    public function destroy(Task $task)
+    {
+        // タスクを削除する
+        // [delete()] データを削除する
+        $task->delete();
+        // 値を返す
+        return $task;
+    }
 }

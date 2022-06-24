@@ -29,3 +29,6 @@ Route::get('/tasks/{task}', [TaskController::class, 'show']);
 /* タスク更新API */
 // [Route::put()] データ更新時に使用するルーティングのHTTPメソッド
 Route::put('/tasks/{task}', [TaskController::class, 'update']);
+/* タスク削除API */
+// [Route::delete()] データ削除時に使用するルーティングのHTTPメソッド
+Route::delete('/tasks/{task}', [TaskController::class, 'destroy']);
