@@ -26,3 +26,6 @@ Route::get('/tasks', [TaskController::class, 'index']);
 Route::post('/tasks', [TaskController::class, 'store']);
 /* タスク詳細取得API */
 Route::get('/tasks/{task}', [TaskController::class, 'show']);
+/* タスク更新API */
+// [Route::put()] データ更新時に使用するルーティングのHTTPメソッド
+Route::put('/tasks/{task}', [TaskController::class, 'update']);

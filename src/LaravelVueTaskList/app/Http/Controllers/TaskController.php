@@ -49,4 +49,22 @@ class TaskController extends Controller
         // [$request->all()] リクエストからのクエリを実行して、レコードの全ての結果を取得します
         return Task::create($request->all());
     }
+
+    /**
+     *  タスク更新
+     *  タスクの更新に応じてDBを更新する処理のコントローラー
+     *  POST /tasks/{task}/edit
+     *  @param Request $request
+     *  @param Task $task
+     *  @return \App\Models\Task
+     */
+    public function update(Request $request, Task $task)
+    {
+        // タスクを更新する
+        // [update] データを更新する
+        // [$request->all()] リクエストからのクエリを実行して、レコードの全ての結果を取得します
+        $task->update($request->all());
+        // 値を返す
+        return $task;
+    }
 }
