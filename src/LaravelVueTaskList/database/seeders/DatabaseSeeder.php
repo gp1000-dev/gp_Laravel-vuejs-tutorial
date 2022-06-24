@@ -20,5 +20,9 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // 個別のSeederを指定しなくてもSeederが実行されるように登録する
+        // [call(Seeder名::class)] 指定されたSeederを呼び出す
+        $this->call(TasksTableSeeder::class);
     }
 }
