@@ -13,81 +13,34 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Title1</td>
-                <td>Content1</td>
-                <td>Ichiro</td>
-                <td>
-                    <!-- クリック時にページを遷移する -->
-                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
-                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/1 の形で名前付きルートを呼び出す -->
-                    <router-link v-bind:to="{name: 'task.show', params: {taskId: 1}}">
-                        <button class="btn btn-primary">Show</button>
-                    </router-link>
-                </td>
-                <td>
-                    <!-- クリック時にページを遷移する -->
-                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
-                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/1/edit の形で名前付きルートを呼び出す -->
-                    <router-link v-bind:to="{name: 'task.edit', params: {taskId: 1}}">
-                        <button class="btn btn-success">Edit</button>
-                    </router-link>
-                </td>
-                <td>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Title2</td>
-                <td>Content2</td>
-                <td>Jiro</td>
-                <td>
-                    <!-- クリック時にページを遷移する -->
-                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
-                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/2 の形で名前付きルートを呼び出す -->
-                    <router-link v-bind:to="{name: 'task.show', params: {taskId: 2}}">
-                        <button class="btn btn-primary">Show</button>
-                    </router-link>
-                </td>
-                <td>
-                    <!-- クリック時にページを遷移する -->
-                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
-                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/2/edit の形で名前付きルートを呼び出す -->
-                    <router-link v-bind:to="{name: 'task.edit', params: {taskId: 2}}">
-                        <button class="btn btn-success">Edit</button>
-                    </router-link>
-                </td>
-                <td>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Title3</td>
-                <td>Content3</td>
-                <td>Saburo</td>
-                <td>
-                    <!-- クリック時にページを遷移する -->
-                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
-                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/3 の形で名前付きルートを呼び出す -->
-                    <router-link v-bind:to="{name: 'task.show', params: {taskId: 3}}">
-                        <button class="btn btn-primary">Show</button>
-                    </router-link>
-                </td>
-                <td>
-                    <!-- クリック時にページを遷移する -->
-                    <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
-                    <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/3/edit の形で名前付きルートを呼び出す -->
-                    <router-link v-bind:to="{name: 'task.edit', params: {taskId: 3}}">
-                        <button class="btn btn-success">Edit</button>
-                    </router-link>
-                </td>
-                <td>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
+                <!-- タスクのリストレンダリング(反復表示) -->
+                <!-- [v-for]配列やオブジェクトの中身を反復表示させるディレクティブ -->
+                <!-- [v-bind:key] リストのアイテムを識別可能にする（keyにitem.nameを指定） -->
+                <tr v-for="(task, index) in tasks" :key="index">
+                    <th scope="row">{{ task.id }}</th>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.content }}</td>
+                    <td>{{ task.person_in_charge }}</td>
+                    <td>
+                        <!-- クリック時に該当タスクIDの詳細ページに遷移する -->
+                        <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
+                        <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/task.id の形で名前付きルートを呼び出す -->
+                        <router-link v-bind:to="{name: 'task.show', params: {taskId: task.id }}">
+                            <button class="btn btn-primary">Show</button>
+                        </router-link>
+                    </td>
+                    <td>
+                        <!-- クリック時に該当タスクIDの編集ページに遷移する -->
+                        <!-- [v-bind] タグ属性の値をVueインスタンス内で定義した変数で表現する -->
+                        <!-- [to="{ name: 'ルート名', params: { taskId: 値 }}"] /taskId/task.id の形で名前付きルートを呼び出す -->
+                        <router-link v-bind:to="{name: 'task.edit', params: {taskId: task.id }}">
+                            <button class="btn btn-success">Edit</button>
+                        </router-link>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -96,5 +49,34 @@
 <script>
     /* [エクスポート] 他のコンポーネントで使用できる様に外部参照を可能にする */
     // [export default] 処理をコンポーネント化して 指定要素で実施する
-    export default {}
+    export default {
+        // アプリケーションで使用するデータを定義する
+        data: function () {
+            return {
+                // 配列tasks[]を定義する
+                tasks: []
+            }
+        },
+        // メソッドオプションを定義する
+        methods: {
+            // タスクを全て取得するメソッドを定義する
+            getTasks() {
+                // Laravelで作成したタスク一覧APIにアクセスする
+                // [axios.get()] HTTP通信(API通信)でサーバーからデータを取得する
+                axios.get('/api/tasks')
+                // データの取得に成功した場合に実行する
+                .then((res) => {
+                    //帰ってきたjsonをこのコンポーネントが持っているtasks配列に登録する
+                    this.tasks = res.data;
+                });
+            }
+        },
+        // ライフサイクルフックを定義する
+        // dataオブジェクトをリアクティブにする
+        // ここでのリアクティブとは（APIなどで）値の更新を行うと更新が反映されること
+        mounted() {
+            //描画時にgetTasks()を実行する
+            this.getTasks();
+        }
+    }
 </script>

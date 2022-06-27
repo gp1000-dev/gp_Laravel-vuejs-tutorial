@@ -5591,57 +5591,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* [エクスポート] 他のコンポーネントで使用できる様に外部参照を可能にする */
 // [export default] 処理をコンポーネント化して 指定要素で実施する
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  // アプリケーションで使用するデータを定義する
+  data: function data() {
+    return {
+      // 配列tasks[]を定義する
+      tasks: []
+    };
+  },
+  // メソッドオプションを定義する
+  methods: {
+    // タスクを全て取得するメソッドを定義する
+    getTasks: function getTasks() {
+      var _this = this;
+
+      // Laravelで作成したタスク一覧APIにアクセスする
+      // [axios.get()] HTTP通信(API通信)でサーバーからデータを取得する
+      axios.get('/api/tasks') // データの取得に成功した場合に実行する
+      .then(function (res) {
+        //帰ってきたjsonをこのコンポーネントが持っているtasks配列に登録する
+        _this.tasks = res.data;
+      });
+    }
+  },
+  // ライフサイクルフックを定義する
+  // dataオブジェクトをリアクティブにする
+  // ここでのリアクティブとは（APIなどで）値の更新を行うと更新が反映されること
+  mounted: function mounted() {
+    //描画時にgetTasks()を実行する
+    this.getTasks();
+  }
+});
 
 /***/ }),
 
@@ -29054,139 +29037,63 @@ var render = function () {
     _c("table", { staticClass: "table table-hover" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Title1")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Content1")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Ichiro")]),
-          _vm._v(" "),
-          _c(
-            "td",
-            [
-              _c(
-                "router-link",
-                { attrs: { to: { name: "task.show", params: { taskId: 1 } } } },
-                [
-                  _c("button", { staticClass: "btn btn-primary" }, [
-                    _vm._v("Show"),
-                  ]),
-                ]
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "td",
-            [
-              _c(
-                "router-link",
-                { attrs: { to: { name: "task.edit", params: { taskId: 1 } } } },
-                [
-                  _c("button", { staticClass: "btn btn-success" }, [
-                    _vm._v("Edit"),
-                  ]),
-                ]
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(1),
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Title2")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Content2")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Jiro")]),
-          _vm._v(" "),
-          _c(
-            "td",
-            [
-              _c(
-                "router-link",
-                { attrs: { to: { name: "task.show", params: { taskId: 2 } } } },
-                [
-                  _c("button", { staticClass: "btn btn-primary" }, [
-                    _vm._v("Show"),
-                  ]),
-                ]
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "td",
-            [
-              _c(
-                "router-link",
-                { attrs: { to: { name: "task.edit", params: { taskId: 2 } } } },
-                [
-                  _c("button", { staticClass: "btn btn-success" }, [
-                    _vm._v("Edit"),
-                  ]),
-                ]
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(2),
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v("3")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Title3")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Content3")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Saburo")]),
-          _vm._v(" "),
-          _c(
-            "td",
-            [
-              _c(
-                "router-link",
-                { attrs: { to: { name: "task.show", params: { taskId: 3 } } } },
-                [
-                  _c("button", { staticClass: "btn btn-primary" }, [
-                    _vm._v("Show"),
-                  ]),
-                ]
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "td",
-            [
-              _c(
-                "router-link",
-                { attrs: { to: { name: "task.edit", params: { taskId: 3 } } } },
-                [
-                  _c("button", { staticClass: "btn btn-success" }, [
-                    _vm._v("Edit"),
-                  ]),
-                ]
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(3),
-        ]),
-      ]),
+      _c(
+        "tbody",
+        _vm._l(_vm.tasks, function (task, index) {
+          return _c("tr", { key: index }, [
+            _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(task.id))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(task.title))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(task.content))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(task.person_in_charge))]),
+            _vm._v(" "),
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      to: { name: "task.show", params: { taskId: task.id } },
+                    },
+                  },
+                  [
+                    _c("button", { staticClass: "btn btn-primary" }, [
+                      _vm._v("Show"),
+                    ]),
+                  ]
+                ),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  {
+                    attrs: {
+                      to: { name: "task.edit", params: { taskId: task.id } },
+                    },
+                  },
+                  [
+                    _c("button", { staticClass: "btn btn-success" }, [
+                      _vm._v("Edit"),
+                    ]),
+                  ]
+                ),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm._m(1, true),
+          ])
+        }),
+        0
+      ),
     ]),
   ])
 }
@@ -29211,22 +29118,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-danger" }, [_vm._v("Delete")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-danger" }, [_vm._v("Delete")]),
     ])
   },
   function () {
