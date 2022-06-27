@@ -38,7 +38,10 @@
                         </router-link>
                     </td>
                     <td>
-                        <button class="btn btn-danger">Delete</button>
+                        <!-- クリックイベントでdeleteTaskメソッドを発火する -->
+                        <!-- v-on:イベント名="メソッド名($event)" -->
+                        <!-- [prevent] イベントにデフォルトで設定されている処理を実行しない -->
+                        <button class="btn btn-danger" v-on:click="deleteTask(task.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -68,6 +71,17 @@
                 .then((res) => {
                     //帰ってきたjsonをこのコンポーネントが持っているtasks配列に登録する
                     this.tasks = res.data;
+                });
+            },
+            // タスクを削除するメソッドを定義する
+            deleteTask(id) {
+                // Laravelで作成したタスク一覧APIにアクセスする
+                // [axios.delete()] HTTP通信(API通信)でサーバーからデータを削除する
+                axios.delete('/api/tasks/' + id)
+                // データの取得に成功した場合に実行する
+                .then((res) => {
+                    // getTasksメソッドを実行してタスク一覧を再取得する
+                    this.getTasks();
                 });
             }
         },

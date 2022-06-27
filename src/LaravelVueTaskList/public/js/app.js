@@ -5686,6 +5686,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* [エクスポート] 他のコンポーネントで使用できる様に外部参照を可能にする */
 // [export default] 処理をコンポーネント化して 指定要素で実施する
@@ -5709,6 +5712,18 @@ __webpack_require__.r(__webpack_exports__);
       .then(function (res) {
         //帰ってきたjsonをこのコンポーネントが持っているtasks配列に登録する
         _this.tasks = res.data;
+      });
+    },
+    // タスクを削除するメソッドを定義する
+    deleteTask: function deleteTask(id) {
+      var _this2 = this;
+
+      // Laravelで作成したタスク一覧APIにアクセスする
+      // [axios.delete()] HTTP通信(API通信)でサーバーからデータを削除する
+      axios["delete"]('/api/tasks/' + id) // データの取得に成功した場合に実行する
+      .then(function (res) {
+        // getTasksメソッドを実行してタスク一覧を再取得する
+        _this2.getTasks();
       });
     }
   },
@@ -29342,7 +29357,20 @@ var render = function () {
               1
             ),
             _vm._v(" "),
-            _vm._m(1, true),
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  on: {
+                    click: function ($event) {
+                      return _vm.deleteTask(task.id)
+                    },
+                  },
+                },
+                [_vm._v("Delete")]
+              ),
+            ]),
           ])
         }),
         0
@@ -29371,14 +29399,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-danger" }, [_vm._v("Delete")]),
     ])
   },
 ]
